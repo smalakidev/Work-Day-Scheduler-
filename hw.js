@@ -50,6 +50,16 @@ $("#9 .input").val(localStorage.getItem("9"));
 $("#10 .input").val(localStorage.getItem("10"));
 $("#11 .input").val(localStorage.getItem("11"));
 
+//This methodology replaces the one above as it is much simpler to use
+
+var i;
+for (let i =9; i <= 17;i++) {
+    $(`#${i} .input`).val(localStorage.getItem(`${i}`));
+
+}
+
+
+
 
 
 
