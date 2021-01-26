@@ -14,7 +14,7 @@ $(".saveBtn").on("click", function(){
     //the id attribute(time) of this div.
     var time = $(this).parent().attr("id");
 
-    console.log(time, value)
+    console.log(time, value);
 
 //This is where the key and value pairs come together and are saved to 
 //the local storage. Key is Time. Value is value in this case.
@@ -22,7 +22,7 @@ $(".saveBtn").on("click", function(){
 
 });
 
-console.log(moment().hours())
+
 
 function hourUpdate(){
 var currentHr = 12;
@@ -38,11 +38,38 @@ var currentHr = 12;
 
 
 
+//This will help with the times 
+function setUpRows(){
+
+    var currentHour = moment().hours();
+    console.log(moment().hours());
+
+    $(".time-row").each(function(){
+
+    var thisRow = $(this);
+  //  console.log(thisRow);
+
+    var thisRowHr = parseInt(thisRow.attr("id"));
+        console.log(thisRowHr);
+
+    // style rows to show where we are in the day
+    if (thisRowHr == currentHour) {
+        console.log("present")
+     thisRow.addClass("present").removeClass("past future");
+    }
+    if (thisRowHr < currentHour) {
+        console.log("past")
+      thisRow.addClass("past").removeClass("present future");
+    }
+    if (thisRowHr > currentHour) {
+        console.log("future")
+      thisRow.addClass("future").removeClass("past present");
+    }
+  });
+  }
 
 
-
-
-
+setUpRows()
 
 
 //load save data from localstorage
@@ -51,7 +78,8 @@ $("#10 .input").val(localStorage.getItem("10"));
 $("#11 .input").val(localStorage.getItem("11"));
 
 //This methodology replaces the one above as it is much simpler to use
-
+//.get item retrieves from local storage, while .set item puts it in local 
+//storage
 var i;
 for (let i =9; i <= 17;i++) {
     $(`#${i} .input`).val(localStorage.getItem(`${i}`));
