@@ -33,8 +33,11 @@ var currentHr = 12;
 }
 
 
-
-
+var  my_time = new Date();
+console.log(my_time);
+//Used jQuery to grab that HTML element and then added a text
+//to it here.
+$('#my_time').text("Current Date and Time,"+ my_time);
 
 
 
